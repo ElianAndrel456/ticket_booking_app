@@ -5,17 +5,17 @@ import 'package:ticket_booking_app/utils/app_styles.dart';
 import 'package:ticket_booking_app/widgets/thick_container.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
-
+  const TicketView({super.key, required this.ticket});
+  final Map<String, dynamic> ticket;
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
 
     return SizedBox(
       width: size.width * 0.85,
-      height: 200.0,
+      height: AppLayout.getHeigth(200.0),
       child: Container(
-        margin: EdgeInsets.only(right: 16.0),
+        margin: EdgeInsets.only(right: AppLayout.getHeigth(16.0)),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -24,17 +24,17 @@ class TicketView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(0xFF526799),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(21.0),
-                  topRight: Radius.circular(21.0),
+                  topLeft: Radius.circular(AppLayout.getHeigth(21.0)),
+                  topRight: Radius.circular(AppLayout.getHeigth(21.0)),
                 ),
               ),
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(AppLayout.getHeigth(16.0)),
               child: Column(
                 children: [
                   Row(
                     children: [
                       Text(
-                        "NYC",
+                        ticket["from"]["code"],
                         style: Styles.headLineStyle3.copyWith(
                           color: Colors.white,
                         ),
@@ -45,7 +45,7 @@ class TicketView extends StatelessWidget {
                         child: Stack(
                           children: [
                             SizedBox(
-                              height: 24.0,
+                              height: AppLayout.getHeigth(24.0),
                               child: LayoutBuilder(
                                 builder: (context, constraints) => Flex(
                                   mainAxisSize: MainAxisSize.max,
@@ -82,7 +82,7 @@ class TicketView extends StatelessWidget {
                       ThickContainer(),
                       Expanded(child: Container()),
                       Text(
-                        "LDN",
+                        ticket["to"]["code"],
                         style: Styles.headLineStyle3.copyWith(
                           color: Colors.white,
                         ),
@@ -94,23 +94,23 @@ class TicketView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 100.0,
+                        width: AppLayout.getWidth(100.0),
                         child: Text(
-                          "New-York",
+                          ticket["from"]["name"],
                           style: Styles.headLineStyle4.copyWith(
                             color: Colors.white,
                           ),
                         ),
                       ),
                       Text(
-                        "8H 30M",
+                        ticket["flying_time"],
                         style:
                             Styles.headLineStyle4.copyWith(color: Colors.white),
                       ),
                       SizedBox(
-                        width: 100.0,
+                        width: AppLayout.getWidth(100.0),
                         child: Text(
-                          "London",
+                          ticket["to"]["name"],
                           style: Styles.headLineStyle4.copyWith(
                             color: Colors.white,
                           ),
@@ -128,8 +128,8 @@ class TicketView extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(
-                    height: 20.0,
-                    width: 10.0,
+                    height: AppLayout.getHeigth(20.0),
+                    width: AppLayout.getWidth(10.0),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -200,7 +200,7 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "1 MAY",
+                            ticket["date"],
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
@@ -217,7 +217,7 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "08:00 AM",
+                            ticket["departure_time"],
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
@@ -234,7 +234,7 @@ class TicketView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            "23",
+                            ticket["number"].toString(),
                             style: Styles.headLineStyle3.copyWith(
                               color: Colors.white,
                             ),
