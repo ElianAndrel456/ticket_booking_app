@@ -5,8 +5,10 @@ import 'package:ticket_booking_app/utils/app_styles.dart';
 import 'package:ticket_booking_app/widgets/thick_container.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key, required this.ticket});
+  const TicketView({super.key, required this.ticket, this.isColor = false});
   final Map<String, dynamic> ticket;
+  final bool isColor;
+
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
@@ -22,7 +24,7 @@ class TicketView extends StatelessWidget {
             //* Showing the blue part of the ticket
             Container(
               decoration: BoxDecoration(
-                color: Color(0xFF526799),
+                color: isColor ? Color(0xFF526799) : Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(AppLayout.getHeigth(21.0)),
                   topRight: Radius.circular(AppLayout.getHeigth(21.0)),
@@ -36,7 +38,7 @@ class TicketView extends StatelessWidget {
                       Text(
                         ticket["from"]["code"],
                         style: Styles.headLineStyle3.copyWith(
-                          color: Colors.white,
+                          color: isColor ? Colors.white : Colors.black,
                         ),
                       ),
                       Expanded(child: Container()),
