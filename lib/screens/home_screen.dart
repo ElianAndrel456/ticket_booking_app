@@ -5,6 +5,7 @@ import 'package:ticket_booking_app/screens/hotel_screen.dart';
 import 'package:ticket_booking_app/screens/ticket_view.dart';
 import 'package:ticket_booking_app/utils/app_info_list.dart';
 import 'package:ticket_booking_app/utils/app_styles.dart';
+import 'package:ticket_booking_app/widgets/double_text_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -70,25 +71,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Gap(40.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Upcoming Flights",
-                      style: Styles.headLineStyle2,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        print("View All");
-                      },
-                      child: Text(
-                        "View All",
-                        style: Styles.textStyle
-                            .copyWith(color: Styles.primaryColor),
-                      ),
-                    )
-                  ],
-                )
+                DoubleTextWidget(
+                  text1: "Upcoming Flights",
+                ),
               ],
             ),
           ),
@@ -103,25 +88,7 @@ class HomeScreen extends StatelessWidget {
           Gap(15.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Hotels",
-                  style: Styles.headLineStyle2,
-                ),
-                InkWell(
-                  onTap: () {
-                    print("View All");
-                  },
-                  child: Text(
-                    "View All",
-                    style:
-                        Styles.textStyle.copyWith(color: Styles.primaryColor),
-                  ),
-                )
-              ],
-            ),
+            child: DoubleTextWidget(text1: "Hotels"),
           ),
           Gap(15.0),
           SingleChildScrollView(
