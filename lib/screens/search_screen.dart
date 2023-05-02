@@ -4,6 +4,7 @@ import 'package:ticket_booking_app/utils/app_layout.dart';
 import 'package:ticket_booking_app/utils/app_styles.dart';
 import 'package:ticket_booking_app/widgets/double_text_widget.dart';
 import 'package:ticket_booking_app/widgets/icon_text_widget.dart';
+import 'package:ticket_booking_app/widgets/ticket_tabs.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -28,40 +29,9 @@ class SearchScreen extends StatelessWidget {
             ),
           ),
           Gap(AppLayout.getHeigth(20.0)),
-          FittedBox(
-            child: Container(
-              padding: EdgeInsets.all(3.5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppLayout.getHeigth(50.0)),
-                color: Color(0xFFF4F6FD),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: size.width * 0.44,
-                    padding: EdgeInsets.symmetric(
-                        vertical: AppLayout.getHeigth(7.0)),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                          left: Radius.circular(AppLayout.getHeigth(50.0))),
-                      color: Colors.white,
-                    ),
-                    child: Center(child: Text("Airline tickets")),
-                  ),
-                  Container(
-                    width: size.width * 0.44,
-                    padding: EdgeInsets.symmetric(
-                        vertical: AppLayout.getHeigth(7.0)),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                          right: Radius.circular(AppLayout.getHeigth(50.0))),
-                      color: Color(0xFFF4F6FD),
-                    ),
-                    child: Center(child: Text("Hotels")),
-                  ),
-                ],
-              ),
-            ),
+          TicketTabs(
+            firstTab: "Airline tickets",
+            secondTab: "Hotels",
           ),
           Gap(AppLayout.getHeigth(25.0)),
           AppIconText(
